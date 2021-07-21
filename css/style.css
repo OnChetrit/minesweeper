@@ -1,0 +1,137 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+@font-face {
+  font-family: digital;
+  src: url(/font/digital.regular.ttf);
+}
+
+body {
+  background-color: #d4a373;
+  text-align: center;
+}
+
+h1,
+h3 {
+  margin: 0 auto;
+}
+
+.level-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin: 10px;
+}
+
+.levels {
+  border-radius: 10px;
+}
+
+.timer {
+  font-family: digital;
+  font-size: 30px;
+}
+
+.restart-button {
+  width: 30px;
+  height: 30px;
+  align-self: center;
+  line-height: 0%;
+}
+
+.container {
+  justify-content: center;
+  display: inline-block;
+  /* margin: 0 auto; */
+}
+
+.game {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  text-align: center;
+  height: 500px;
+  padding: 30px;
+  width: 100%;
+  background-color: #faedcd;
+  border: 1px solid black;
+  border-radius: 20px;
+  transition: height 0.5s, width 0.5s;
+}
+
+.bottom-game {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+}
+
+/* .hide {
+  box-shadow: inset 0px 0px 0px 2px grey;
+} */
+
+table {
+  display: inline-block;
+  align-self: center;
+  border-collapse: collapse;
+  max-width: 400px;
+  max-height: 350px;
+  border: 1px solid black;
+}
+
+table img {
+  max-width: 100%;
+}
+
+td {
+  padding: 0px;
+  width: 30px;
+  height: 30px;
+}
+
+.cell {
+  display: block;
+  background-color: #ccd5ae;
+  width: 30px;
+  height: 30px;
+  max-height: 40px;
+  font-weight: bold;
+  padding: 0px;
+  outline: auto;
+  /* box-shadow: inset -3px -3px -7px 2px #ffffff73, inset 3px 3px 5px black; */
+}
+
+.cell img {
+  height: 100%;
+  width: 100%;
+}
+
+.cell:hover {
+  background-color: #fefae0;
+}
+
+.dark {
+  background-color: #ccd5ae;
+}
+
+.bright {
+  background-color: #e9edc9;
+}
+
+footer {
+  margin-top: 25px;
+}
+
+.show {
+  background-color: darkgray;
+}
+
+.show-bright {
+  background-color: #d7b899;
+}
+
+.show-dark {
+  background-color: #e5c29f;
+}
