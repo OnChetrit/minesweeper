@@ -3,8 +3,8 @@
 var gStartTime;
 var gTimerInterval;
 var gBoard;
-var gMine = '<img src="/img/bomb.png">';
-var gFlag = '<img src="/img/flag.png">'
+var gMine = '<img src="img/bomb.png">';
+var gFlag = '<img src="img/flag.png">'
 
 var gCurrLevel = 'easy';
 var gLevels = [
