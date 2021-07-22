@@ -2,19 +2,20 @@
 
 //--------- click options ---------//
 function onLevelClicked(index) {
+    gSRestart.play();
     clearInterval(gTimerInterval);
     gCurrLevel = gLevels[index];
-    // gCurrLevel = inputChecked;
     initGame();
 }
 
 function cellClicked(elCell, i, j) {
     var cell = gBoard[i][j];
-    if (!gGame.secPassed) {
+    if (gGame.firstClick) {
         gGame.isOn = true;
-        randomMines(gBoard, i, j);
+        renderMines(gBoard, i, j);
         setMinesNegsCount(gBoard);
         startTime();
+        gGame.firstClick = false;
     }
     if (!gGame.isOn) return
     if (cell.isMarked) return;
@@ -31,10 +32,7 @@ function cellClicked(elCell, i, j) {
 
     //check lose
     if (cell.isMine) {
-        // console.log(gGame.mines);
-        if (gGame.lives) {
-            gameOver();
-        }
+        gameOver();
     } else if (cell.mineAroundCount === 0) {
         // open negs cells
         openNegsCells(gBoard, i, j)

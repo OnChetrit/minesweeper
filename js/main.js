@@ -8,6 +8,7 @@ var gSLose = new Audio('sound/lose.mp3');
 var gSWin = new Audio('sound/win.mp3');
 var gSFlag = new Audio('sound/flag.mp3');
 var gSPopFlag = new Audio('sound/pop-flag.mp3');
+var gSRestart = new Audio('sound/restart.mp3')
 var gStartTime;
 var gTimerInterval;
 var gBoard;
@@ -35,17 +36,16 @@ var gLevels = [
 var gCurrLevel = gLevels[0];
 
 function initGame() {
-    // clearInterval(gTimerInterval);
+    clearInterval(gTimerInterval);
     gGame = {
         isOn: true,
         shownCount: 0,
         markedCount: 0,
         secPassed: 0,
-        lives: 3
+        firstClick: true
     }
     gBoard = buildBoard(gCurrLevel);
     renderBoard(gBoard);
-    console.log(gBoard);
     renderButtons();
     document.querySelector('.mines').innerText = gCurrLevel.MINES;
     document.querySelector('.timer').innerText = gGame.secPassed;
@@ -71,7 +71,7 @@ function buildBoard(level) {
     return board;
 }
 
-function randomMines(board, row, col) {
+function renderMines(board, row, col) {
     var mines = gCurrLevel.MINES; // get level Size
     var numOfMines = 0;
     while (numOfMines < mines) {
@@ -82,6 +82,7 @@ function randomMines(board, row, col) {
                 board[i][j].isMine = true;
                 // gGame.mines.push({ i, j });
                 numOfMines++;
+
             }
         }
     }
@@ -116,10 +117,10 @@ function setMinesNegsCount(board) {
     }
 }
 
-// function restartGame() {
-//     clearInterval(gTimerInterval);
-//     initGame();
-// }
+function restartButton() {
+    gSRestart.play();
+    initGame();
+}
 
 function victory() {
     gGame.isOn = false;
