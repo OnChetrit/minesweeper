@@ -39,8 +39,9 @@ function cellClicked(elCell, i, j) {
     }
 
     // check victory
-    if (gGame.shownCount + gGame.shownCount === gCurrLevel.SIZE ** 2
-        && gGame.isMarked === gCurrLevel.MINES) {
+    if (gGame.markedCount + gGame.shownCount === gCurrLevel.SIZE ** 2
+        && gGame.isMarked === gCurrLevel.MINES ||
+        gGame.shownCount + gCurrLevel.MINES === gCurrLevel.SIZE ** 2) {
         victory();
     }
 }
