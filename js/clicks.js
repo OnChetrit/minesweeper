@@ -138,6 +138,7 @@ function openNegsCell(board, row, col) {
 }
 
 function onScrollClick(elCell, row, col) {
+    if (gGame.hintClicked) return;
     var countFlags = 0;
     for (var i = row - 1; i <= row + 1; i++) {
         if (i < 0 || i >= gBoard.length) continue;
