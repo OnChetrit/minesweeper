@@ -11,6 +11,9 @@ var gSFlag = new Audio('sound/flag.mp3');
 var gSPopFlag = new Audio('sound/pop-flag.mp3');
 var gSRestart = new Audio('sound/restart.mp3');
 var gSWrong = new Audio('sound/wrong.mp3');
+var gSTrophy = new Audio('sound/trophy.mp3');
+var gSClick = new Audio('sound/click.mp3');
+var gIsWin = false;
 var gMinesExposed;
 var gStartTime;
 var gTimerInterval;
@@ -21,19 +24,16 @@ var gLevels = [
         difficulty: 'easy',
         MINES: 5,
         SIZE: 6,
-        // bestScore: Infinity
     },
     {
         difficulty: 'medium',
         MINES: 10,
         SIZE: 8,
-        // bestScore: Infinity
     },
     {
         difficulty: 'hard',
         MINES: 15,
         SIZE: 10,
-        // bestScore: Infinity
     }
 ]
 var gCurrLevel = gLevels[0];
@@ -53,7 +53,8 @@ function playGame() {
         hintsCount: 3,
         lives: 0,
         isFirstClick: true,
-        isHint: false
+        isHint: false,
+        hintClicked: false
     }
     gBoard = buildBoard(gCurrLevel);
     renderScores();
@@ -114,6 +115,7 @@ function setMinesNegsCount(board) {
 }
 
 function getHintCells(row, col) {
+    gGame.hintClicked = true;
     var hintsCells = [];
     for (var i = row - 1; i <= row + 1; i++) {
         if (i < 0 || i >= gBoard.length) continue;
@@ -154,6 +156,7 @@ function hideHintCells(hintsCells) {
         elCell.classList.remove('show-hint');
         elCell.innerHTML = '';
     }
+    gGame.hintClicked = false;
 }
 
 function checkVictory() {
@@ -164,13 +167,15 @@ function checkVictory() {
         gGame.isOn = false;
         document.querySelector('.restart-button').innerText = '😎';
         gSWin.play();
+        gIsWin = true;
         clearInterval(gTimerInterval);
         if (gCurrLevel.difficulty === 'easy')
             if (gGame.secPassed < +localStorage.easyScore || !localStorage.easyScore) {
                 localStorage.setItem('easyScore', `${gGame.secsPassed}`);
                 localStorage.easyScore = gGame.secPassed;
                 renderScores();
-                setTimeout(triggerModal, 1000);
+                document.querySelector('.new-score').innerText = 'New Score !'
+                setTimeout(triggerModal, 500);
             }
 
         if (gCurrLevel.difficulty === 'medium')
@@ -178,7 +183,8 @@ function checkVictory() {
                 localStorage.setItem('mediumScore', `${gGame.secsPassed}`);
                 localStorage.mediumScore = gGame.secPassed;
                 renderScores();
-                setTimeout(triggerModal, 1000);
+                document.querySelector('.new-score').innerText = 'New Score !'
+                setTimeout(triggerModal, 500);
             }
 
         if (gCurrLevel.difficulty === 'hard')
@@ -186,7 +192,8 @@ function checkVictory() {
                 localStorage.setItem('hardScore', `${gGame.secsPassed}`);
                 localStorage.hardScore = gGame.secPassed;
                 renderScores();
-                setTimeout(triggerModal, 1000);
+                document.querySelector('.new-score').innerText = 'New Score !'
+                setTimeout(triggerModal, 500);
             }
     }
 }
@@ -215,11 +222,18 @@ function removeLives() {
 function triggerModal() {
     var modal = document.querySelector('.modal');
     if (!modal.classList.contains('modal-effect')) {
+        gSTrophy.play();
         modal.classList.add('modal-display');
-        setTimeout(function () { modal.classList.add('modal-effect') }, 500)
+        setTimeout(function () { modal.classList.add('modal-effect') }, 200);
+        if (gIsWin) return
+        document.querySelector('.new-score').innerText = '';
+        gIsWin = false;
     } else {
+        gSClick.play();
         modal.classList.remove('modal-effect');
-        setTimeout(function () { modal.classList.remove('modal-display') }, 1000)
+        setTimeout(function () { modal.classList.remove('modal-display') }, 600);
+        setTimeout(function () { document.querySelector('.new-score').innerText = ''; }, 600);
+
     }
 }
 

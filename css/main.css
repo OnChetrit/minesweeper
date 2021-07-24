@@ -107,6 +107,7 @@ h3 {
 .modal {
   position: absolute;
   display: none;
+  color: #606060;
   top: 61%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -126,6 +127,12 @@ h3 {
   display: block;
 }
 
+.close-modal-button {
+  color: #606060;
+  font-weight: bolder;
+  font-size: 1.2em;
+}
+
 .scores {
   position: absolute;
   top: 50%;
@@ -133,7 +140,7 @@ h3 {
   transform: translate(-50%, -50%);
   height: 200px;
   width: 150px;
-  color: #606060;
+  /* color: #606060; */
   font-weight: bold;
   font-family: 'Times New Roman', Times, serif;
 }

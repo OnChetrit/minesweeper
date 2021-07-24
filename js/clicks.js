@@ -38,6 +38,7 @@ function cellClicked(elCell, i, j) {
     if (!gGame.isOn) return
     if (cell.isMarked) return;
     if (cell.isShown) return;
+    if (gGame.hintClicked) return;
 
     if (gGame.isHint && gGame.hintsCount) {
         getHintCells(i, j);
@@ -62,18 +63,15 @@ function cellClicked(elCell, i, j) {
     }
 
     if (!cell.mineAroundCount) {
-        // open negs cells
         openNegsCells(gBoard, i, j)
     }
 
     // check checkVictory
-
     checkVictory();
 
 }
 // recursion opening for empty cells
 function openNegsCells(board, row, col) {
-    //if click on open number - check if flags and bombs the same.. if true open negs
     if (!gGame.isOn) return
     if (board[row][col].mineAroundCount) return
     for (var i = row - 1; i <= row + 1; i++) {
@@ -141,7 +139,6 @@ function openNegsCell(board, row, col) {
 
 function onScrollClick(elCell, row, col) {
     var countFlags = 0;
-    var countMines = 0;
     for (var i = row - 1; i <= row + 1; i++) {
         if (i < 0 || i >= gBoard.length) continue;
         for (var j = col - 1; j <= col + 1; j++) {
