@@ -67,13 +67,13 @@ function renderHints() {
 
 function renderScores() {
     if (!localStorage.easyScore) {
-        localStorage.setItem('easyScore', '1000');
+        localStorage.setItem('easyScore', '');
     }
     if (!localStorage.mediumScore) {
-        localStorage.setItem('mediumScore', '1000');
+        localStorage.setItem('mediumScore', '');
     }
     if (!localStorage.hardScore) {
-        localStorage.setItem('hardScore', '1000');
+        localStorage.setItem('hardScore', '');
     }
     document.querySelector('.easy-score').innerHTML = +localStorage.easyScore;
     document.querySelector('.medium-score').innerHTML = +localStorage.mediumScore;

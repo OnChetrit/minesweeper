@@ -166,7 +166,7 @@ function checkVictory() {
         gSWin.play();
         clearInterval(gTimerInterval);
         if (gCurrLevel.difficulty === 'easy')
-            if (gGame.secPassed < +localStorage.easyScore) {
+            if (gGame.secPassed < +localStorage.easyScore || !localStorage.easyScore) {
                 localStorage.setItem('easyScore', `${gGame.secsPassed}`);
                 localStorage.easyScore = gGame.secPassed;
                 renderScores();
@@ -174,7 +174,7 @@ function checkVictory() {
             }
 
         if (gCurrLevel.difficulty === 'medium')
-            if (gGame.secPassed < +localStorage.mediumScore) {
+            if (gGame.secPassed < +localStorage.mediumScore || !localStorage.mediumScore) {
                 localStorage.setItem('mediumScore', `${gGame.secsPassed}`);
                 localStorage.mediumScore = gGame.secPassed;
                 renderScores();
@@ -182,7 +182,7 @@ function checkVictory() {
             }
 
         if (gCurrLevel.difficulty === 'hard')
-            if (gGame.secPassed < +localStorage.hardScore) {
+            if (gGame.secPassed < +localStorage.hardScore || !localStorage.hardScore) {
                 localStorage.setItem('hardScore', `${gGame.secsPassed}`);
                 localStorage.hardScore = gGame.secPassed;
                 renderScores();

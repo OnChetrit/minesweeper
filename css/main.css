@@ -1,7 +1,6 @@
 * {
   box-sizing: border-box;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
-    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: cursive;
 }
 
 :root {
@@ -112,11 +111,11 @@ h3 {
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  width: 281px;
-  height: 287px;
+  width: 309px;
+  height: 305px;
   border-radius: 20px;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(18px);
+  backdrop-filter: blur(21px);
   opacity: 0;
   transition: opacity 0.5s ease-in;
 }
@@ -136,11 +135,18 @@ h3 {
   width: 150px;
   color: #606060;
   font-weight: bold;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 th {
   letter-spacing: 3px;
-  font-size: 22px;
+  font-size: 27px;
+}
+
+.scores td {
+  font-size: 18px;
+  width: 35px;
+  height: 35px;
 }
 
 .coffeeright {
