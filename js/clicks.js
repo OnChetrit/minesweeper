@@ -93,6 +93,7 @@ function openNegsCells(board, row, col) {
 
 function cellMarked(elCell, i, j) {
     // capture flag on cell if is hidden
+    if (gGame.hintClicked) return;
     if (!gGame.isOn) return
     var cell = gBoard[i][j];
     if (cell.isShown) return;
