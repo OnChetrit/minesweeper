@@ -1,0 +1,85 @@
+/* table's definitions */
+.table-div {
+  height: 330px;
+  display: flex;
+  justify-content: center;
+}
+.board {
+  display: inline-block;
+  align-self: center;
+  border-collapse: collapse;
+  border: 2px solid var(--main-color);
+  max-width: 400px;
+  max-height: 350px;
+}
+table img {
+  background: transparent;
+}
+td {
+  padding: 0px;
+}
+/* cells definitions*/
+.cell {
+  background-color: #ccd5ae;
+  line-height: 28px;
+  width: 28px;
+  height: 28px;
+  font-weight: bold;
+  background-color: var(--main-color);
+  box-shadow: 12px 12px 16px 0 rgba(0, 0, 0, 0.25),
+    -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
+  /* transition: background-color 0.1s; */
+}
+.cell img {
+  height: 100%;
+}
+.cell:hover {
+  background-color: #ececec;
+}
+/* cells font colors */
+.color-blue {
+  color: #468faf;
+}
+.color-green {
+  color: #46af48;
+}
+.color-red {
+  color: #af4646;
+}
+.color-purple {
+  color: #8946af;
+}
+.color-orange {
+  color: #e0a314;
+}
+.color-pink {
+  color: #ac46af;
+}
+.color-brown {
+  color: #946410;
+}
+.color-turkiz {
+  color: #17a693;
+}
+/* cells background colors */
+.dark {
+  background-color: var(--main-color);
+}
+.bright {
+  background-color: #a9d6e5;
+}
+.show-dark {
+  background-color: #bdc4ca;
+}
+.show-bright {
+  background-color: #dee2e6;
+}
+.show-mine {
+  background-color: #ff1a25;
+}
+.show-hint {
+  background-color: #dee2e6;
+  color: #69d4a8;
+  box-shadow: 12px 12px 16px 0 rgba(0, 0, 0, 0.25),
+    -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
+}

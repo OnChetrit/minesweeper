@@ -4,25 +4,69 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/buttons.css" />
+    <link rel="stylesheet" href="css/board.css" />
     <title>Minesweeper</title>
   </head>
   <body onload="initGame()">
     <div class="game">
       <div class="top-container">
+        <button class="trophy transparent-button" onclick="triggerModal()">
+          <img src="img/trophy.png" alt="trophy-table" />
+        </button>
         <h1><span class="header">Minesweeper</span></h1>
         <div class="level-buttons"></div>
         <div class="game-info">
           <div class="info timer-contain"><span class="timer">0</span>🕛</div>
-          <button onclick="restartButton()" class="restart-button"></button>
+          <div class="hint-contain"><span class="hints"></span></div>
+          <button
+            onclick="restartButton()"
+            class="restart-button transparent-button"
+          ></button>
+          <div class="lives"></div>
           <div class="info flags"><span class="mines"></span>🚩</div>
         </div>
       </div>
-      <div class="table-div"><table class="board"></table></div>
-      <footer class="coffeeright">
-        <div>This game Created & Designed by On Chetrit</div>
-      </footer>
+
+      <div class="table-div">
+        <table class="board"></table>
+      </div>
     </div>
+
+    <footer>
+      <div class="coffeeright">Created & Designed by On Chetrit</div>
+    </footer>
+    <div class="modal">
+      <h2><span class="new-score"></span></h2>
+      <table class="scores">
+        <tr>
+          <th>Level</th>
+          <th>Scores</th>
+        </tr>
+        <tr>
+          <td>easy</td>
+          <td class="easy-score"></td>
+        </tr>
+        <tr>
+          <td>medium</td>
+          <td class="medium-score"></td>
+        </tr>
+        <tr>
+          <td>hard</td>
+          <td class="hard-score"></td>
+        </tr>
+      </table>
+      <button
+        onclick="triggerModal()"
+        class="close-modal-button transparent-button"
+      >
+        X
+      </button>
+    </div>
+    <div class="style style1"></div>
+    <div class="style style2"></div>
+    <div class="style style3"></div>
 
     <script src="js/clicks.js"></script>
     <script src="js/render.js"></script>
