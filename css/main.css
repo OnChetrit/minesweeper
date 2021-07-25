@@ -217,15 +217,12 @@ th {
 @keyframes animstyle1 {
   0% {
     top: 65%;
-    left: 35%;
   }
   50% {
     top: 75%;
-    left: 35%;
   }
   100% {
     top: 65%;
-    left: 35%;
   }
 }
 @keyframes animstyle2 {
