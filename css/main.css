@@ -9,7 +9,7 @@
 
 @font-face {
   font-family: digital;
-  src: url(/font/digital.regular.ttf);
+  src: url('fonts/digital-regular.ttf');
 }
 
 body {
@@ -187,12 +187,20 @@ th {
   height: 200px;
   top: 65%;
   left: 35%;
+  animation-name: animstyle1;
+  animation-duration: 15s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
 }
 .style2 {
   width: 150px;
   height: 150px;
   top: 80%;
   left: 65%;
+  animation-name: animstyle2;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
 }
 .style3 {
   background-image: linear-gradient(to left, #468faf, #a9d6e5);
@@ -200,4 +208,45 @@ th {
   height: 300px;
   top: 30%;
   left: 65%;
+  animation-name: animstyle3;
+  animation-duration: 20s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes animstyle1 {
+  0% {
+    top: 65%;
+    left: 35%;
+  }
+  50% {
+    top: 75%;
+    left: 35%;
+  }
+  100% {
+    top: 65%;
+    left: 35%;
+  }
+}
+@keyframes animstyle2 {
+  0% {
+    top: 80%;
+  }
+  50% {
+    top: 70%;
+  }
+  100% {
+    top: 85%;
+  }
+}
+@keyframes animstyle3 {
+  0% {
+    left: 65%;
+  }
+  50% {
+    left: 45%;
+  }
+  100% {
+    left: 65%;
+  }
 }
