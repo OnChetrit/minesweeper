@@ -66,18 +66,23 @@ function renderHints() {
 }
 
 function renderScores() {
-    if (!localStorage.easyScore) {
-        localStorage.setItem('easyScore', '');
+    var keys = ['easy', 'medium', 'hard', 'expert', 'insane'];
+    for (var i = 0; i < keys.length; i++) {
+        var score = keys[i] + 'Score';
+        if (!localStorage[score]) {
+            localStorage.setItem(score, '');
+        }
+        console.log();
+        document.querySelector(`.${keys[i]}-score`).innerHTML = +localStorage[score];
     }
-    if (!localStorage.mediumScore) {
-        localStorage.setItem('mediumScore', '');
-    }
-    if (!localStorage.hardScore) {
-        localStorage.setItem('hardScore', '');
-    }
-    document.querySelector('.easy-score').innerHTML = +localStorage.easyScore;
-    document.querySelector('.medium-score').innerHTML = +localStorage.mediumScore;
-    document.querySelector('.hard-score').innerHTML = +localStorage.hardScore;
+    //     if (!localStorage.mediumScore) {
+    //         localStorage.setItem('mediumScore', '');
+    //     }
+    //     if (!localStorage.hardScore) {
+    //         localStorage.setItem('hardScore', '');
+    //     }
+    // document.querySelector('.medium-score').innerHTML = +localStorage.mediumScore;
+    // document.querySelector('.hard-score').innerHTML = +localStorage.hardScore;
 
 }
 

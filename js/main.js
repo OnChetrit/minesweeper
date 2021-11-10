@@ -22,18 +22,28 @@ var gGame;
 var gLevels = [
     {
         difficulty: 'easy',
-        MINES: 5,
-        SIZE: 6,
+        MINES: 15,
+        SIZE: 10,
     },
     {
         difficulty: 'medium',
-        MINES: 10,
-        SIZE: 8,
+        MINES: 20,
+        SIZE: 12,
     },
     {
         difficulty: 'hard',
-        MINES: 15,
-        SIZE: 10,
+        MINES: 30,
+        SIZE: 15,
+    },
+    {
+        difficulty: 'expert',
+        MINES: 45,
+        SIZE: 17,
+    },
+    {
+        difficulty: 'insane',
+        MINES: 60,
+        SIZE: 20,
     }
 ]
 var gCurrLevel = gLevels[0];
@@ -127,36 +137,30 @@ function getHintCells(row, col) {
             }
         }
     }
-    showHintCells(hintsCells);
+    toggleHintCells(hintsCells);
 }
 
-function showHintCells(hintsCells) {
+function toggleHintCells(hintsCells, isShow = true) {
     for (var i = 0; i < hintsCells.length; i++) {
         var row = hintsCells[i].row;
         var col = hintsCells[i].col;
         var elCell = document.querySelector(`[data-i="${row}"][data-j="${col}"]`);
         var currCell = gBoard[row][col];
-        elCell.classList.add('show-hint');
-        if (currCell.isMine) {
-            elCell.innerHTML = gMine;
-        }
-        else {
-            currCell.mineAroundCount = currCell.mineAroundCount ? currCell.mineAroundCount : '';
-            elCell.innerHTML = currCell.mineAroundCount;
-        }
+        // var method = isShow ? 'add' : 'remove'
+        elCell.classList.toggle('show-hint');
+        if (isShow) {
+            if (currCell.isMine) {
+                elCell.innerHTML = gMine;
+            }
+            else {
+                currCell.mineAroundCount = currCell.mineAroundCount ? currCell.mineAroundCount : '';
+                elCell.innerHTML = currCell.mineAroundCount;
+            }
+        } else elCell.innerHTML = '';
     }
-    setTimeout(function () { hideHintCells(hintsCells) }, 1000)
-}
+    if (isShow) setTimeout(function () { toggleHintCells(hintsCells, false) }, 1000)
+    else gGame.hintClicked = false;
 
-function hideHintCells(hintsCells) {
-    for (var i = 0; i < hintsCells.length; i++) {
-        var row = hintsCells[i].row;
-        var col = hintsCells[i].col;
-        var elCell = document.querySelector(`[data-i="${row}"][data-j="${col}"]`);
-        elCell.classList.remove('show-hint');
-        elCell.innerHTML = '';
-    }
-    gGame.hintClicked = false;
 }
 
 function checkVictory() {
@@ -169,32 +173,15 @@ function checkVictory() {
         gSWin.play();
         gIsWin = true;
         clearInterval(gTimerInterval);
-        if (gCurrLevel.difficulty === 'easy')
-            if (gGame.secPassed < +localStorage.easyScore || !localStorage.easyScore) {
-                localStorage.setItem('easyScore', `${gGame.secsPassed}`);
-                localStorage.easyScore = gGame.secPassed;
-                renderScores();
-                document.querySelector('.new-score').innerText = 'New Score !'
-                setTimeout(triggerModal, 500);
-            }
-
-        if (gCurrLevel.difficulty === 'medium')
-            if (gGame.secPassed < +localStorage.mediumScore || !localStorage.mediumScore) {
-                localStorage.setItem('mediumScore', `${gGame.secsPassed}`);
-                localStorage.mediumScore = gGame.secPassed;
-                renderScores();
-                document.querySelector('.new-score').innerText = 'New Score !'
-                setTimeout(triggerModal, 500);
-            }
-
-        if (gCurrLevel.difficulty === 'hard')
-            if (gGame.secPassed < +localStorage.hardScore || !localStorage.hardScore) {
-                localStorage.setItem('hardScore', `${gGame.secsPassed}`);
-                localStorage.hardScore = gGame.secPassed;
-                renderScores();
-                document.querySelector('.new-score').innerText = 'New Score !'
-                setTimeout(triggerModal, 500);
-            }
+        var key = gCurrLevel.difficulty + 'Score';
+        if (gGame.secPassed < +localStorage[key] || !localStorage[key]) {
+            console.log(gGame.secPassed);
+            localStorage.setItem(key, gGame.secsPassed);
+            localStorage[key] = gGame.secPassed;
+            renderScores();
+            document.querySelector('.new-score').innerText = 'New Score !'
+            setTimeout(triggerModal, 500);
+        }
     }
 }
 
