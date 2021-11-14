@@ -175,7 +175,6 @@ function checkVictory() {
         clearInterval(gTimerInterval);
         var key = gCurrLevel.difficulty + 'Score';
         if (gGame.secPassed < +localStorage[key] || !localStorage[key]) {
-            console.log(gGame.secPassed);
             localStorage.setItem(key, gGame.secsPassed);
             localStorage[key] = gGame.secPassed;
             renderScores();

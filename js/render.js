@@ -26,7 +26,6 @@ function renderMines(board, row, col) {
         if (i !== row && j !== col) {
             if (!board[i][j].isMine) {
                 board[i][j].isMine = true;
-                // gGame.mines.push({ i, j });
                 numOfMines++;
 
             }
@@ -72,18 +71,8 @@ function renderScores() {
         if (!localStorage[score]) {
             localStorage.setItem(score, '');
         }
-        console.log();
         document.querySelector(`.${keys[i]}-score`).innerHTML = +localStorage[score];
     }
-    //     if (!localStorage.mediumScore) {
-    //         localStorage.setItem('mediumScore', '');
-    //     }
-    //     if (!localStorage.hardScore) {
-    //         localStorage.setItem('hardScore', '');
-    //     }
-    // document.querySelector('.medium-score').innerHTML = +localStorage.mediumScore;
-    // document.querySelector('.hard-score').innerHTML = +localStorage.hardScore;
-
 }
 
 function renderCell(i, j, value) {
