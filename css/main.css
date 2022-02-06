@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  font-family: cursive;
+  font-family: cursive, sans-serif;
 }
 
 :root {
@@ -9,13 +9,14 @@
 
 @font-face {
   font-family: digital;
-  src: url('/fonts/digital-regular.ttf');
+  src: url('../fonts/digital-regular.ttf');
 }
 
 body {
   background-color: #ececec;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 .game {
@@ -24,10 +25,11 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  width: 800px;
+  max-width: 800px;
+  width: 100%;
   height: 90vh;
   border-radius: 20px;
-  padding: 20px 20px;
+  padding: 20px;
   background: rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(12px);
@@ -36,6 +38,19 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.18);
   display: flex;
   flex-direction: column;
+}
+
+@media (max-width: 600px) {
+  .game {
+    transform: unset;
+    height: unset;
+    width: unset;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+  }
 }
 
 h1,
@@ -51,7 +66,7 @@ h3 {
 }
 
 .top-container {
-  flex-grow: 0.5;
+  flex: 0.5;
 }
 
 .game-info {
@@ -66,13 +81,14 @@ h3 {
   align-items: center;
   justify-content: flex-end;
   padding-right: 10px;
-  width: 120px;
-  height: 6vh;
-  font-size: 25px;
+  flex-basis: 120px;
+  height: 5vh;
+  font-size: 1.4rem;
   line-height: 65px;
   border-radius: 7px;
   background-color: var(--main-color);
   color: #ececec;
+  min-width: 100px;
   box-shadow: inset 0px 0px 8px 1px rgb(0 0 0 / 25%),
     -8px -8px 12px 0 rgb(255 255 255 / 30%);
 }
@@ -80,28 +96,42 @@ h3 {
 .timer,
 .mines {
   font-family: digital;
-  font-size: 45px;
+  font-size: 2.5rem;
   margin-right: 10px;
 }
 
 .hint-contain {
   width: 100px;
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  justify-content: center;
+  align-content: center;
 }
 
 .lives {
   display: flex;
+  justify-content: center;
   align-content: center;
-  flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+  .info {
+    flex-basis: 100px;
+  }
+  .game-info {
+    flex-wrap: wrap;
+  }
+  .hint-contain,
+  .lives {
+    order: 1;
+    flex-basis: 50%;
+  }
 }
 
 .live,
 .hint {
   opacity: 1;
   transition: opacity 1s ease-in-out;
-  font-size: 30px;
+  font-size: 1.875rem;
 }
 
 .disappear-effect {
@@ -109,14 +139,15 @@ h3 {
 }
 
 .modal {
-  position: absolute;
+  position: fixed;
   display: none;
   color: #606060;
   top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  width: 587px;
+  max-width: 587px;
+  width: 100%;
   height: 60vh;
   border-radius: 20px;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
@@ -144,30 +175,34 @@ h3 {
   transform: translate(-50%, -50%);
   width: 587px;
   font-weight: bold;
-  font-family: 'Times New Roman', Times, serif;
 }
 
 th {
-  font-size: 50px;
+  font-size: clamp(1.5rem, 3vw, 3.125rem);
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .scores td {
-  font-size: 45px;
+  font-size: clamp(1rem, 3vw, 2.8rem);
+  font-family: 'Times New Roman', Times, serif;
   height: 35px;
+  font-weight: 400;
 }
 
 .coffeeright {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   color: var(--main-color);
-  top: 95%;
+  bottom: 10px;
   left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 25px;
+  transform: translateX(-50%);
+  font-size: clamp(0.8rem, 4vw, 1.3rem);
+  width: 80%;
   font-weight: 700;
   text-align: center;
-  height: 5vh;
   line-height: 50px;
-  width: 700px;
   background: rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(20px);

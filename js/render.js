@@ -61,7 +61,7 @@ function renderHints() {
     for (var i = gGame.hintsCount; i > 0; i--) {
         strHTML += `<button onclick="onHintClick(this)" class="transparent-button hint hint${i}">💡</button>`
     }
-    document.querySelector('.hints').innerHTML = strHTML;
+    document.querySelector('.hint-contain').innerHTML = strHTML;
 }
 
 function renderScores() {
