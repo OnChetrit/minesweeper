@@ -50,7 +50,7 @@ function renderLives() {
     var strHTML = '';
 
     for (var i = gGame.lives; i < 3; i++) {
-        strHTML += `<span class="live live${i}">❤️</span>`
+        strHTML += `<img class="live live${i}" src="img/red-heart.svg">`
     }
     document.querySelector('.lives').innerHTML = strHTML;
 }
@@ -59,7 +59,12 @@ function renderHints() {
     var strHTML = '';
 
     for (var i = gGame.hintsCount; i > 0; i--) {
-        strHTML += `<button onclick="onHintClick(this)" class="transparent-button hint hint${i}">💡</button>`
+        strHTML += `<button class="transparent-button"
+                    onclick="onHintClick(this)"
+                    >
+                    <img class="hint hint${i}"
+                        src="img/hint.svg">
+                    </button>`
     }
     document.querySelector('.hint-contain').innerHTML = strHTML;
 }

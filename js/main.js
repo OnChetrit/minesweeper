@@ -2,7 +2,8 @@
 
 var gMine = '<img src="img/mine.png">';
 var gFlag = '<img src="img/flag.png">';
-var gLives = '❤️'
+var gLives = '<img src="img/red-heart.svg">'
+
 var gSCell = new Audio('sound/cell.mp3');
 var gSCells = new Audio('sound/cells.wav');
 var gSLose = new Audio('sound/lose.mp3');

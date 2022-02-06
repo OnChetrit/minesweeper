@@ -2,6 +2,11 @@
   box-sizing: border-box;
   font-family: cursive, sans-serif;
 }
+@media (max-width: 600px) {
+  * {
+    font-family: sans-serif;
+  }
+}
 
 :root {
   --main-color: #468faf;
@@ -96,7 +101,7 @@ h3 {
 .timer,
 .mines {
   font-family: digital;
-  font-size: 2.5rem;
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
   margin-right: 10px;
 }
 
@@ -111,6 +116,7 @@ h3 {
   display: flex;
   justify-content: center;
   align-content: center;
+  gap: 5px;
 }
 
 @media (max-width: 600px) {
@@ -131,7 +137,8 @@ h3 {
 .hint {
   opacity: 1;
   transition: opacity 1s ease-in-out;
-  font-size: 1.875rem;
+  height: 35px;
+  width: 35px;
 }
 
 .disappear-effect {
