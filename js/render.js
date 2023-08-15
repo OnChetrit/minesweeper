@@ -5,9 +5,10 @@ function renderBoard(board) {
   for (var i = 0; i < board.length; i++) {
     strHTML += '<tr>\n';
     for (var j = 0; j < board[0].length; j++) {
+      var backgroundColor = (i + j) % 2 === 0 ? 'dark' : 'bright';
       var className = (i + j) % 2 === 0 ? 'dark' : 'bright';
       strHTML += `<td><div data-i="${i}" data-j="${j}"
-            oncontextmenu="handleContextMenuClick(event)"
+            oncontextmenu="handleContextMenuClick(event,${i},${j})"
             onclick="handleClick(event,${i},${j})"
             ondblclick="handleDoubleClick(event,${i},${j})"
             class="cell ${className}"></div></td>`;
@@ -130,5 +131,8 @@ function renderCell(i, j, value) {
         elCell.classList.add('show-bright');
       }
     }
+  }
+  if (gBoard[i][j].isShown) {
+    elCell.classList.add('shown');
   }
 }

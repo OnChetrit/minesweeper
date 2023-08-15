@@ -9,7 +9,7 @@
 }
 
 :root {
-  --main-color: #468faf;
+  --main-color: #3a93d0;
 }
 
 @font-face {
@@ -66,8 +66,7 @@ h3 {
 .header {
   font-family: 'Poppins', sans-serif;
   color: var(--main-color);
-  text-shadow: -5px -5px 10px rgba(255, 255, 255, 0.55),
-    10px 10px 15px rgba(70, 70, 70, 0.12);
+  text-shadow: -5px -5px 10px rgba(255, 255, 255, 0.55), 10px 10px 15px rgba(70, 70, 70, 0.12);
 }
 
 .top-container {
@@ -94,8 +93,7 @@ h3 {
   background-color: var(--main-color);
   color: #ececec;
   min-width: 100px;
-  box-shadow: inset 0px 0px 8px 1px rgb(0 0 0 / 25%),
-    -8px -8px 12px 0 rgb(255 255 255 / 30%);
+  box-shadow: inset 0px 0px 8px 1px rgb(0 0 0 / 25%), -8px -8px 12px 0 rgb(255 255 255 / 30%);
 }
 
 .timer,
@@ -223,8 +221,7 @@ th {
   border-radius: 50%;
   background-image: linear-gradient(var(--main-color), #a9d6e5);
   z-index: -1;
-  box-shadow: inset 0px 0px 20px 7px rgb(0 0 0 / 25%),
-    -8px -8px 12px 0 rgb(255 255 255 / 30%);
+  box-shadow: inset 0px 0px 20px 7px rgb(0 0 0 / 25%), -8px -8px 12px 0 rgb(255 255 255 / 30%);
 }
 .style1 {
   width: 200px;

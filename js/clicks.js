@@ -29,8 +29,6 @@ function restartButton() {
 }
 
 function cellClicked(i, j) {
-  console.log('i', i);
-  console.log('j', j);
   var cell = gBoard[i][j];
   if (gGame.isFirstClick) {
     gGame.isOn = true;
@@ -190,13 +188,16 @@ function handleDoubleClick(ev, i, j) {
   clearTimeout(timer);
 
   var cell = gBoard[i][j];
-  if (cell.mineAroundCount) {
+  if (cell.mineAroundCount && cell.isShown) {
     onScrollClick(i, j);
     return;
   }
   cellMarked(i, j);
 }
 
-function handleContextMenuClick(ev) {
+function handleContextMenuClick(ev, i, j) {
   ev.preventDefault();
+  if (ev.button === 2) {
+    cellMarked(i, j);
+  }
 }
